@@ -1,0 +1,4 @@
+{
+    "directory": "app/bower_components",
+    "proxy": "proxy.corp.globant.com:3128"
+}
