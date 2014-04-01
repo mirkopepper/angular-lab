@@ -4,15 +4,16 @@ angular.module('angularLabApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'GitHubService',
+  'AppControllers',
+  'AppRoutes'
 ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+// Enable CORS
+.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
+}])
+.controller('AppController', function($scope, $routeParams, $http){
+  $scope.name = "mirko";
+});
