@@ -14,6 +14,5 @@ angular.module('angularLabApp', [
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }])
-.controller('AppController', function($scope, $routeParams, $http){
-  $scope.name = "mirko";
+.controller('AppController', function($scope){
 });
