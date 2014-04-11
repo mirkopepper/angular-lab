@@ -6,8 +6,7 @@ angular.module('angularLabApp', [
   'ngSanitize',
   'ngRoute',
   'GitHubService',
-  'AppControllers',
-  'AppRoutes'
+  'DasboardController'
 ])
 // Enable CORS
 .config(['$httpProvider', function($httpProvider) {
@@ -15,4 +14,30 @@ angular.module('angularLabApp', [
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }])
 .controller('AppController', function($scope){
-});
+  
+})
+.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+
+  var templateUrl = function (name) {
+    return 'scripts/widgets/dashboard/views/' + name + '.html';
+  };
+  
+  $routeProvider
+    .when(
+      '/', {
+      templateUrl : templateUrl('main'),
+      controller  : 'MainController'
+    })
+    .when('/about',{
+        templateUrl : templateUrl('about'),
+        controller  : 'AboutController'
+      })
+    .when('/contact',{
+        templateUrl : templateUrl('contact'),
+        controller  : 'ContactController'
+      })
+    .otherwise({redirectTo:'/'});
+  
+  $locationProvider.html5Mode(true);
+  
+}]);

@@ -37,8 +37,8 @@
       <!-- Application content here -->
       <div class="container" ng-view=""></div>
   
-      <div class="footer">
-        <p><a href="https://github.com/mirkopepper/angular-lab">github.com/mirkopepper/angular-lab</a></p>
+      <div class="footer" ng-controller="FooterController">
+        <p><a href="https://{{ footerText }}">{{ footerText }}</a></p>
       </div>
     
     </div>
@@ -72,9 +72,11 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/routes.js"></script>
-        <script src="scripts/services.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/modules/api/github.js"></script>
+        <script src="scripts/widgets/dashboard/dashboard.controller.js"></script>
+        <script src="scripts/widgets/user/user.controller.js"></script>
+        <script src="scripts/widgets/user/user.service.js"></script>
+        <script src="scripts/widgets/repo/repo.controller.js"></script>
         <!-- endbuild -->
 </body>
 </html>

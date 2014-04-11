@@ -1,0 +1,28 @@
+<div class="alert alert-info" ng-hide="isLogged"><p>{{ body.signin }}</p></div>
+
+<div class="row">
+  <div class="col-xs-4">
+    <input type="text" class="form-control" placeholder="Search for some repo.." ng-show="isLogged" ng-model="query">
+  </div>
+</div>
+
+<div class="row marketing centered">
+  <button class="btn btn-primary span12" ng-click="getOauthUrl()" ng-hide="isLogged">{{ body.login }}</button>
+</div>
+
+
+<div class="container">
+  <ul>
+  <li ng-repeat="repo in data | filter:query">
+    <div class="media">
+      <a class="pull-left" href="#">
+        <img class="media-object" height="60" src="{{ repo.owner.avatar_url }}" alt="...">
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="{{ repo.html_url }}">{{ repo.html_url }}</a></h4>
+        <p>{{ repo.description }}</p>
+      </div>
+    </div>
+    </li>
+  </ul>
+</div>
